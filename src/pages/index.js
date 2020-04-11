@@ -33,7 +33,13 @@ const Card = ({ item }) => {
   return (
     <li className="card">
       <h3>
-        <a href={`${href}#${new Date(pubDate).getTime()}`}>{title}</a>
+        <a
+          href={`${href}#${new Date(pubDate).getTime()}`}
+          target="_blank"
+          rel="noopener"
+        >
+          {title}
+        </a>
       </h3>
       <p>{description}</p>
       <small>
