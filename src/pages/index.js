@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 const NewsLetters = (props) => {
   const [isLoading, setIsLoading] = React.useState(false);
