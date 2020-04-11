@@ -1,0 +1,31 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "isomorphic-unfetch": "3.0.0",
+    "next": "^9.3.4",
+    "prop-types": "15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rss-parser": "^3.7.6"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "format": "prettier --write **/*.js",
+    "lint": "yarn lint:cmd --fix",
+    "lint:ci": "yarn lint:cmd",
+    "lint:cmd": "eslint . --ext .js,.snap --cache",
+    "start": "next start -p 8000",
+    "test": "jest --watch"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

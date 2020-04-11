@@ -1,0 +1,21 @@
+[
+  {
+    "rss": "https://react.statuscode.com/rss"
+  },
+  {
+    "rss": "https://nodeweekly.com/rss"
+  },
+  {
+    "rss": "https://javascriptweekly.com/rss"
+  },
+
+  {
+    "rss": "https://mongodb.email/rss"
+  },
+  {
+    "rss": "https://dbweekly.com/rss"
+  },
+  {
+    "rss": "https://jamstack.email/rss"
+  }
+]
