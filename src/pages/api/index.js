@@ -1,8 +1,6 @@
 import "isomorphic-unfetch";
+import { parseNewsLetterRss } from "../../feature/newsLetter";
 import newsletters from "../../data/news-letters.json";
-
-let Parser = require("rss-parser");
-let parser = new Parser();
 
 const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
 
@@ -23,16 +21,7 @@ const withContentJson = () => (handler) => (req, res) => {
 
 const controller = async (req, res) => {
   if (req.method === "GET") {
-    const promises = newsletters.map(async (site) => {
-      const feed = await parser.parseURL(site.rss);
-
-      return {
-        title: feed.title,
-        description: feed.description,
-        href: feed.link,
-        pubDate: feed.items[0].pubDate,
-      };
-    });
+    const promises = newsletters.map((site) => parseNewsLetterRss(site.rss));
 
     const resolvedData = await Promise.all(promises);
 

@@ -8,7 +8,6 @@
   {
     "rss": "https://javascriptweekly.com/rss"
   },
-
   {
     "rss": "https://mongodb.email/rss"
   },
@@ -17,5 +16,8 @@
   },
   {
     "rss": "https://jamstack.email/rss"
+  },
+  {
+    "rss": "https://weekly.statuscode.com/rss"
   }
 ]

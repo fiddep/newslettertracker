@@ -6,7 +6,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Newsletter tracker</title>
           <meta
             name="description"
             content="Aggregate development newsletters"
