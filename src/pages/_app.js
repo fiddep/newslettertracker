@@ -1,17 +1,13 @@
 import React from "react";
-import { Head } from "next/document";
+import { Head } from "next/head";
 
-const App = (props) => {
-  const { Component, pageProps } = props;
-
+export default ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>My new cool app</title>
+        <title key="title">Newsletter tracker</title>
       </Head>
       <Component {...pageProps} />
     </>
   );
 };
-
-export default App;
