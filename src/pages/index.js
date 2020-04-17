@@ -8,7 +8,7 @@ import {
 import fs from "fs";
 
 const NewsLetters = (props) => {
-  const [sorting, setSorting] = React.useState("latest");
+  const [sorting, setSorting] = React.useState("default");
   const [isLoading, setIsLoading] = React.useState(false);
   const [data, setData] = React.useState(props.sites);
 
@@ -28,10 +28,10 @@ const NewsLetters = (props) => {
     <>
       <h2 className="title">News Letters</h2>
       <ul style={{ display: "flex", listStyleType: "none" }}>
-        <li onClick={() => setSorting("default")}>
+        <li style={{ padding: "0 8px" }} onClick={() => setSorting("default")}>
           <p>Alphabetically</p>
         </li>
-        <li onClick={() => setSorting("latest")}>
+        <li style={{ padding: "0 8px" }} onClick={() => setSorting("latest")}>
           <p>Latest</p>
         </li>
       </ul>
