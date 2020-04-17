@@ -1,4 +1,5 @@
 import React from "react";
+import { Head } from "next/document";
 
 const App = (props) => {
   const { Component, pageProps } = props;
