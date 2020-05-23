@@ -19,5 +19,8 @@
   },
   {
     "rss": "https://weekly.statuscode.com/rss"
+  },
+  {
+    "rss": "https://cprss.s3.amazonaws.com/denoweekly.com.xml"
   }
 ]

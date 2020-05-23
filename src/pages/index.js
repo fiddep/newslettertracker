@@ -9,16 +9,14 @@ import fs from "fs";
 
 const NewsLetters = (props) => {
   const [sorting, setSorting] = React.useState("default");
-  const [isLoading, setIsLoading] = React.useState(false);
   const [data, setData] = React.useState(props.sites);
 
   React.useEffect(() => {
-    const run = async () => {
-      setIsLoading(true);
-      const data = await fetch("/api").then((res) => res.json());
-      setData(data);
-      setIsLoading(false);
-    };
+    const run = () =>
+      fetch("/api")
+        .then((res) => res.json())
+        .then(setData);
+
     run();
   }, []);
 
@@ -60,13 +58,11 @@ const Card = ({ item }) => {
         </a>
       </h3>
       <p>{description}</p>
-      <small>
-        {isMounted && (
-          <>
-            <b>Updated:</b> {new Date(pubDate).toLocaleDateString("sv-se")}
-          </>
-        )}
-      </small>
+      {isMounted && (
+        <small>
+          <b>Updated:</b> {formatPreferredDate(pubDate)}
+        </small>
+      )}
     </li>
   );
 };
@@ -91,5 +87,11 @@ export async function getStaticProps() {
     },
   };
 }
+
+const formatPreferredDate = (date) =>
+  new Date(date).toLocaleDateString(getPreferredLanguage());
+
+const getPreferredLanguage = () =>
+  window.navigator.userLanguage || window.navigator.language;
 
 export default NewsLetters;
