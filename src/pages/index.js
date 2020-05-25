@@ -6,9 +6,11 @@ import {
   sortByTitle,
 } from "../feature/newsLetter";
 import fs from "fs";
+import { useRouter } from "next/router";
 
 const NewsLetters = (props) => {
-  const [sorting, setSorting] = React.useState("default");
+  const querySort = useSearchQuery();
+  const [sorting, setSorting] = React.useState(querySort);
   const [data, setData] = React.useState(props.sites);
 
   React.useEffect(() => {
@@ -66,6 +68,14 @@ const Card = ({ item }) => {
     </li>
   );
 };
+
+function useSearchQuery() {
+  const validQueries = ["default", "latest"];
+  const { query } = useRouter();
+  const sort = query.sort;
+
+  return validQueries.some((q) => q === sort) ? sort : "default";
+}
 
 function useMounted() {
   const [mounted, setMounted] = React.useState(false);
