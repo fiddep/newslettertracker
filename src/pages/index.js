@@ -9,8 +9,7 @@ import fs from "fs";
 import { useRouter } from "next/router";
 
 const NewsLetters = (props) => {
-  const querySort = useSearchQuery();
-  const [sorting, setSorting] = React.useState(querySort);
+  const [querySort, setQuerySort] = useSearchQuery();
   const [data, setData] = React.useState(props.sites);
 
   React.useEffect(() => {
@@ -22,16 +21,16 @@ const NewsLetters = (props) => {
     run();
   }, []);
 
-  const sortFn = sorting === "latest" ? sortByRecentDate : sortByTitle;
+  const sortFn = querySort === "latest" ? sortByRecentDate : sortByTitle;
 
   return (
     <>
       <h2 className="title">News Letters</h2>
       <ul style={{ display: "flex", listStyleType: "none" }}>
-        <li style={{ padding: "0 8px" }} onClick={() => setSorting("default")}>
+        <li style={{ padding: "0 8px" }} onClick={setQuerySort("default")}>
           <p>Alphabetically</p>
         </li>
-        <li style={{ padding: "0 8px" }} onClick={() => setSorting("latest")}>
+        <li style={{ padding: "0 8px" }} onClick={setQuerySort("latest")}>
           <p>Latest</p>
         </li>
       </ul>
@@ -71,10 +70,20 @@ const Card = ({ item }) => {
 
 function useSearchQuery() {
   const validQueries = ["default", "latest"];
-  const { query } = useRouter();
-  const sort = query.sort;
+  const router = useRouter();
+  const sort = router.query.sort;
 
-  return validQueries.some((q) => q === sort) ? sort : "default";
+  const setSortQuery = React.useCallback(
+    (type) => () => {
+      router.push(`/?sort=${type}`, undefined, { shallow: true });
+    },
+    []
+  );
+
+  return [
+    validQueries.some((q) => q === sort) ? sort : "default",
+    setSortQuery,
+  ];
 }
 
 function useMounted() {
