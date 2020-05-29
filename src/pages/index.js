@@ -59,11 +59,11 @@ const Card = ({ item }) => {
         </a>
       </h3>
       <p>{description}</p>
-      {isMounted && (
+      
         <small>
-          <b>Updated:</b> {formatPreferredDate(pubDate)}
+          <b>Updated:</b> {isMounted && formatPreferredDate(pubDate)}
         </small>
-      )}
+    
     </li>
   );
 };
