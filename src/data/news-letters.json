@@ -22,5 +22,8 @@
   },
   {
     "rss": "https://cprss.s3.amazonaws.com/denoweekly.com.xml"
+  },
+  {
+    "rss": "https://golangweekly.com/rss"
   }
 ]
