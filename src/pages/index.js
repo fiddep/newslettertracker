@@ -9,7 +9,7 @@ const NewsLetters = (props) => {
       <h2 className="title">News Letters</h2>
 
       <ul className="defaultListStyle">
-        {sortFn(props.sites).map((props) => (
+        {props.sites.map((props) => (
           <Card item={{ ...props }} key={props.href} />
         ))}
       </ul>
