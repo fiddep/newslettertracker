@@ -30,4 +30,4 @@ const controller = async (req, res) => {
   }
 };
 
-export default compose(withCdnCache(120), withContentJson())(controller);
+export default compose(withCdnCache(30), withContentJson())(controller);
