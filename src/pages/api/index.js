@@ -1,4 +1,3 @@
-import "isomorphic-unfetch";
 import { parseNewsLetterRss } from "../../feature/newsLetter";
 import newsletters from "../../data/news-letters.json";
 
