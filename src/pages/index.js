@@ -18,7 +18,9 @@ const NewsLetters = (props) => {
 };
 
 const Card = ({ item }) => {
+  const isMounted = useMounted();
   const { href, title, pubDate, description } = item;
+
   return (
     <li className="card">
       <h3>
@@ -33,11 +35,17 @@ const Card = ({ item }) => {
       <p>{description}</p>
 
       <small>
-        <b>Updated:</b> {formatPreferredDate(pubDate)}
+        <b>Updated:</b> {isMounted && formatPreferredDate(pubDate)}
       </small>
     </li>
   );
 };
+
+function useMounted() {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+  return mounted;
+}
 
 export async function getStaticProps() {
   const filePath = path.join(process.cwd(), "src", "data", "news-letters.json");
