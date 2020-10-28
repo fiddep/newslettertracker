@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import path from "path";
 import { parseNewsLetterRss, sortByRecentDate } from "../feature/newsLetter";
 import fs from "fs";
@@ -41,8 +42,8 @@ const Card = ({ item }) => {
 };
 
 function useMounted() {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   return mounted;
 }
 
