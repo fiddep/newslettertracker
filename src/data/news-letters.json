@@ -28,5 +28,8 @@
   },
   {
     "rss": "https://frontendfoc.us/rss"
+  },
+  {
+    "rss": "https://serverless.email/rss"
   }
 ]
