@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import path from "path";
+import { useEffect, useState } from "react";
+import siteLinks from "../data/news-letters.json";
 import { parseNewsLetterRss, sortByRecentDate } from "../feature/newsLetter";
-import fs from "fs";
 
 const NewsLetters = (props) => {
   return (
@@ -48,9 +47,6 @@ function useMounted() {
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), "src", "data", "news-letters.json");
-  const siteLinks = JSON.parse(fs.readFileSync(filePath, "utf8"));
-
   const sites = await Promise.all(
     siteLinks.map(({ rss }) => parseNewsLetterRss(rss))
   ).then(sortByRecentDate);
