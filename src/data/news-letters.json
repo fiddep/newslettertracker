@@ -31,5 +31,6 @@
   },
   {
     "rss": "https://serverless.email/rss"
-  }
+  },
+  { "rss": "https://postgresweekly.com/rss"}
 ]
