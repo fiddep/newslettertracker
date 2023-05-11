@@ -38,7 +38,7 @@ const Card = ({ feed }: { feed: NewsLetter }) => {
   );
 };
 
-export async function getFeeds(): Promise<NewsLetter[]> {
+async function getFeeds(): Promise<NewsLetter[]> {
   const newsFeeds = await Promise.all(
     siteLinks.map(({ rss }) => parseNewsLetterRss(rss))
   ).then(sortByRecentDate);
