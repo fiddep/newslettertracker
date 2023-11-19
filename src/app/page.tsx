@@ -1,6 +1,5 @@
-import siteLinks from "../data/news-letters.json";
 import type { NewsLetter } from "../feature/newsLetter";
-import { parseNewsLetterRss, sortByRecentDate } from "../feature/newsLetter";
+import { getFeeds } from "../feature/newsLetter";
 import { DateFormat } from "./DateFormat";
 
 const NewsLetters = async () => {
@@ -37,13 +36,5 @@ const Card = ({ feed }: { feed: NewsLetter }) => {
     </li>
   );
 };
-
-async function getFeeds(): Promise<NewsLetter[]> {
-  const newsFeeds = await Promise.all(
-    siteLinks.map(({ rss }) => parseNewsLetterRss(rss))
-  ).then(sortByRecentDate);
-
-  return newsFeeds;
-}
 
 export default NewsLetters;

@@ -1,4 +1,6 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Newsletter tracker",
   description: "Aggregate newsletter updates from your favorite creators",
 };

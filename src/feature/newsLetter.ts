@@ -1,4 +1,7 @@
 import Parser from "rss-parser";
+import siteLinks from "../data/news-letters.json";
+
+const parser = new Parser();
 
 export type NewsLetter = {
   title: string;
@@ -7,13 +10,17 @@ export type NewsLetter = {
   pubDate: number;
 };
 
-export const parseNewsLetterRss = async (rssUrl) => {
-  const response = await fetch(rssUrl, {
-    next: { revalidate: 30 },
-  });
-  const rss = await response.text();
+export async function getFeeds(): Promise<NewsLetter[]> {
+  const newsFeeds = await Promise.all(
+    siteLinks.map(({ rss }) => parseNewsLetterRss(rss))
+  ).then(sortByRecentDate);
 
-  const parser = new Parser();
+  return newsFeeds;
+}
+
+export const parseNewsLetterRss = async (rssUrl) => {
+  const response = await fetch(rssUrl, { next: { revalidate: 30 } });
+  const rss = await response.text();
   const feed = await parser.parseString(rss);
 
   return {
