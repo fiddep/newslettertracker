@@ -9,8 +9,10 @@ export const DateFormat = ({ date }: { date: number }) => {
   const [formattedDate, setFormattedDate] = useState("");
 
   useEffect(() => {
-    setFormattedDate(new Intl.DateTimeFormat().format(date));
+    setFormattedDate(
+      new Intl.DateTimeFormat(navigator.languages[0]).format(date)
+    );
   }, []);
 
-  return <>{formattedDate}</>;
+  return <time>{formattedDate}</time>;
 };
